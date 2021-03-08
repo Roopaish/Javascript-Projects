@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Covered+By+Your+Grace&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+main{
+  height: 100vh;
+  width:100%;
+  background-color: rgba(216, 141, 210, 0.842);
+}
+#clock{
+  font-family: 'Bungee',cursive;
+  height:3rem;
+  width:10rem;
+  background-color: rgb(179, 97, 77);
+  border-radius: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding:2rem;
+  margin:2rem;
+}
+
+
+/* keyframes */
