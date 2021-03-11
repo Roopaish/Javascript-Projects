@@ -1,28 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Covered+By+Your+Grace&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Covered+By+Your+Grace&display=swap");
 
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
-main{
-  height: 100vh;
-  width:100%;
-  background-color: rgba(216, 141, 210, 0.842);
+html {
+  font-size: 10px;
 }
-#clock{
-  font-family: 'Bungee',cursive;
-  height:3rem;
-  width:10rem;
+body {
+  font-size: 1.6rem;
+  max-width: 956px;
+  margin: auto;
+}
+main {
+  height: 100vh;
+  width: 100%;
+}
+
+header {
+  width: 100vw;
+  height: 10rem;
+  position: fixed;
+  background-color: white;
+  z-index: 3;
+  display: flex;
+}
+h3 {
+  margin-top: 3.5rem;
+  font-size: 2rem;
+}
+#clock {
+  font-family: "Bungee", cursive;
+  height: 5rem;
+  width: 14rem;
   background-color: rgb(179, 97, 77);
-  border-radius: 4rem;
+  border-radius: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding:2rem;
-  margin:2rem;
+  padding: 2rem;
+  margin: 2rem;
 }
 
+#news {
+  font-size: 2rem;
+  width: auto;
+  position: relative;
+  top: 10rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  padding: 1rem;
+  margin-top: 0;
+  border-radius: 2px;
+  max-width: 600px;
+}
+#image img {
+  border-radius: 1px;
+  float: left;
+  width: 10rem;
+  height: 10rem;
+  margin-right: 1rem;
+}
+
+#author-date {
+  margin-bottom: 2rem;
+}
+
+#link {
+  text-decoration: none;
+  font-style: italic;
+  margin-bottom: 5rem;
+}
 
 /* keyframes */

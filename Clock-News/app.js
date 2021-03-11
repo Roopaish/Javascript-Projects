@@ -19,17 +19,43 @@ setInterval(CurrentTime, 1000); //calling fxn every second
 window.addEventListener("load", () => {
   NewsApi();
 });
-// News
-//https://cors-anywhere.herokuapp.com/   ,{headers:new Headers({"X-Requested-With":"yesyes"})}
-var NewsApi = function () {
-  // fetch('http://newsapi.org/v2/top-headlines?country=us&apiKey=bc91210a0992438696a09b31fc10db30')
-  // .then(a => a.json())
-  // .then(response =>{
-  //   for(var i;i<response.articles.length;i++){
-  //     document.getElementById('news').innerHTML = "hi";
-  //     // "<div style='padding-top:20px;'> <img style='float:left; width:150px;' src="+response.articles[i].urlToImage+"><h1>"+response.articles[i].title+"</h1>"+response.articles[i].source.name+"<br>"+response.articles[i].description+"<a href='"+response.articles[i].url+"'>"+response.articles[i].url+"</a> </div>";
-  //   }
-  // })
 
-  
+// News
+// image = document.getElementById('image');
+// author_date = document.getElementById('author-date');
+// title = document.getElementById('title');
+// description = document.getElementById('description');
+// link = document.getElementById('link');
+news = document.getElementById("news");
+var NewsApi = function () {
+  fetch(
+    "https://api.nytimes.com/svc/topstories/v2/science.json?api-key=vHGgEvamzPaHT4fAn8SOZA2QdSGK1ZHK"
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      for (var i = 0; i <= res.num_results; i++) {
+        news.innerHTML += `
+        <div id="news${i}">
+        <div id="image">
+          <img src="${res.results[i].multimedia[0].url}" alt="">
+        </div>
+        <div id="title">
+          ${res.results[i].title}
+        </div>
+        <div id="author-date">
+          ${res.results[i].byline}    ${res.results[i].published_date}
+        </div>
+        <div id="description">
+          ${res.results[i].abstract}
+        </div>
+        <div id="link">
+          <a href="${res.results[i].url}" target="_blank">Full Article</a>
+        </div>
+        </div>
+        `;
+      }
+    });
 };
+
+//f82e56fc8b7358f0df8fbf1116fa31fe
