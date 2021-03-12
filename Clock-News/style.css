@@ -58,19 +58,38 @@ h3 {
 #image img {
   border-radius: 1px;
   float: left;
-  width: 10rem;
-  height: 10rem;
+  max-width: 20rem;
   margin-right: 1rem;
+  border-radius: 1rem;
 }
 
-#author-date {
+#title {
+  font-weight: 600;
+}
+
+#author {
+  margin-top: 1rem;
   margin-bottom: 2rem;
+  font-style: italic;
+  color: rgb(119, 119, 119);
 }
-
+#description {
+  color: rgb(87, 85, 85);
+}
 #link {
-  text-decoration: none;
   font-style: italic;
   margin-bottom: 5rem;
 }
 
-/* keyframes */
+a {
+  text-decoration: none;
+  color: rgb(206, 138, 138);
+}
+
+@media (max-width: 513px) {
+  #image {
+    width: 100vw;
+    float: left;
+    margin-bottom: 1rem;
+  }
+}

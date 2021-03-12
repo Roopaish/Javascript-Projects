@@ -43,8 +43,8 @@ var NewsApi = function () {
         <div id="title">
           ${res.results[i].title}
         </div>
-        <div id="author-date">
-          ${res.results[i].byline}    ${res.results[i].published_date}
+        <div id="author">
+          ${res.results[i].byline}
         </div>
         <div id="description">
           ${res.results[i].abstract}
