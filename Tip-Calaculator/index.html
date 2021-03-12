@@ -13,41 +13,47 @@
   <main>
     <h3>Tip Calculator</h3>
     <hr />
-    
+
     <table class="menu">
       <tr>
-        <td><h4>Dishes</h4><br/></td>
-        <td><h4>Quantity</h4><br/></td>
-        <td><h4>Prices</h4><br/></td>
+        <td>
+          <h4>Dishes</h4><br />
+        </td>
+        <td>
+          <h4>Quantity</h4><br />
+        </td>
+        <td>
+          <h4>Prices</h4><br />
+        </td>
       </tr>
       <tr>
         <td>Chowmin</td>
         <td><input type="number" name="qty" onchange="updateValues(0)" /></td>
-        <td><input id="hide" type="number" name="price" readonly/></td>
+        <td><input id="hide" type="number" name="price" readonly /></td>
       </tr>
       <tr>
         <td>Momo</td>
-        <td><input type="number" name="qty" onchange="updateValues(1)"/></td>
-        <td><input id="hide" type="number" name="price" readonly/></td>
+        <td><input type="number" name="qty" onchange="updateValues(1)" /></td>
+        <td><input id="hide" type="number" name="price" readonly /></td>
       </tr>
       <tr>
         <td>Parautha</td>
-        <td><input type="number"  name="qty" onchange="updateValues(2)"/></td>
-        <td><input id="hide" type="number" name="price" readonly/></td>
+        <td><input type="number" name="qty" onchange="updateValues(2)" /></td>
+        <td><input id="hide" type="number" name="price" readonly /></td>
       </tr>
       <tr>
         <td>Samosa</td>
-        <td><input type="number" name="qty" onchange="updateValues(3)"/></td>
-        <td><input id="hide" type="number" name="price" readonly/></td>
+        <td><input type="number" name="qty" onchange="updateValues(3)" /></td>
+        <td><input id="hide" type="number" name="price" readonly /></td>
       </tr>
       <tr>
         <td><button onclick="Total()"><b>Total</b></button></td>
-        <td><b><input id="hide" type="number" name="qty" readonly/></b></td>
-        <td><b><input id="hide" type="number" name="price" readonly/></b></td>
+        <td><b><input id="hide" type="number" name="qty" readonly /></b></td>
+        <td><b><input id="hide" type="number" name="price" readonly /></b></td>
       </tr>
       <tr>
         <td colspan="3" style="color:rgb(230, 48, 48); text-align: center; font-style: italic;">
-          <b><span id="err" ></span></b>
+          <b><span id="err"></span></b>
         </td>
       </tr>
     </table>
@@ -55,12 +61,15 @@
     <h4>Tip?</h4>
     <table class="tip">
       <tr>
-        <td><label><input type="radio" name="tip" value="0" onchange="totalBill(0)"/>Delicious(20%)</label></td>
-        <td><label><input type="radio" name="tip" value="1"onchange="totalBill(1)"/>Good(10%)</label></td>
+        <td><label><input type="radio" name="tip" value="0" onchange="totalBill(0)" />Delicious(20%)</label></td>
+        <td><label><input type="radio" name="tip" value="1" onchange="totalBill(1)" />Good(10%)</label></td>
       </tr>
       <tr>
-        <td><label><input type="radio" name="tip" value="2" onchange="totalBill(2)"/>Meh(5%)</label></td>
-        <td><label><input type="radio" name="tip" value="3" onchange="totalBill(3)"/>Bad(0%)</label></td>
+        <td><label><input type="radio" name="tip" value="2" onchange="totalBill(2)" />Meh(5%)</label></td>
+        <td><label><input type="radio" name="tip" value="3" onchange="totalBill(3)" />Bad(0%)</label></td>
+      </tr>
+      <tr>
+        <td><label><input type="radio" name="tip" onchange="totalBill(4)" />No,thanks!</label></td>
       </tr>
     </table>
 

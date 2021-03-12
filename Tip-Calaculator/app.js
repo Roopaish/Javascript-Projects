@@ -33,12 +33,13 @@ function Total() {
 }
 
 function totalBill(i) {
-  tipValues = [20, 10, 5, 0];
+  tipValues = [20, 10, 5, 0, 0];
   remarks = [
     "Glad you enjoy that!😍",
     "Thank you!😊",
     "Thanks! We will improve.😁",
     "We are really sorry that you didn't like the food!😢",
+    "Thank you!",
   ];
 
   bill = totalPrice + (tipValues[i] / 100) * totalPrice;
