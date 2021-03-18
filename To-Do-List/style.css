@@ -1,75 +1,87 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   font-size: 10px;
 }
-body{
+body {
   font-size: 2.4rem;
   margin: 2rem auto;
-  width:fit-content;
+  width: fit-content;
   background-color: rgb(174, 234, 252);
   /* background-color: rgb(24, 26, 27);
   color:white; */
 }
-main{
+main {
   padding: 2rem;
 }
-h3{
+h3 {
   font-weight: 600;
 }
-ul{
+ul {
   list-style-type: none;
 }
 
 /* input-style */
-.input{
+.input {
   max-width: 50rem;
   margin: 2rem 0rem 2rem;
   display: flex;
   height: fit-content;
-  height:3.5rem;
+  height: 3.5rem;
 }
 
-input{
-  height:3.5rem;
-  font-size: 2.5rem;  
+input {
+  height: 3.5rem;
+  font-size: 2.5rem;
   outline-color: rgb(255, 123, 0);
   border: 0.1rem solid rgb(255, 123, 0);
   padding: 1rem;
 }
 
-.add{
+.add {
   margin-left: 1px;
   border: 0.14rem solid rgb(255, 123, 0);
-  outline-color:rgb(255, 123, 0);
-  background-color:rgb(255, 123, 0);
-  border-radius:0.2rem;
-  width:3.5rem;
-  color:white;
+  outline-color: rgb(255, 123, 0);
+  background-color: rgb(255, 123, 0);
+  border-radius: 0.2rem;
+  width: 3.5rem;
+  color: white;
 }
 
-.add:hover{
+.add:hover {
   background-color: white;
-  color:rgb(255, 123, 0);
+  color: rgb(255, 123, 0);
   cursor: pointer;
 }
 
 /* todo-style */
-.todo{
-  width:20rem;
+.todo {
+  width: fit-content;
   border: 1px solid red;
   display: flex;
   justify-content: space-between;
   background-color: rgb(255, 123, 0);
+  margin: auto;
+  margin-bottom: 1rem;
+  border-radius: 0.4rem;
+}
+
+.todo li {
+  padding: 1rem;
+}
+
+.fa.fa-trash-alt,
+.fa.fa-check {
+  /* background-color: white; */
 }
 
 /* Dropdown */
-select{
+select {
   border: 0.14rem solid rgb(255, 123, 0);
-  outline-color:rgb(255, 123, 0);
+  outline-color: rgb(255, 123, 0);
   font-size: 2rem;
   margin: 2rem 1rem 0rem 0rem;
   padding: 0.4rem;
