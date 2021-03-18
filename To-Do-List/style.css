@@ -11,6 +11,8 @@ body{
   margin: 2rem auto;
   width:fit-content;
   background-color: rgb(174, 234, 252);
+  /* background-color: rgb(24, 26, 27);
+  color:white; */
 }
 main{
   padding: 2rem;
@@ -36,6 +38,7 @@ input{
   font-size: 2.5rem;  
   outline-color: rgb(255, 123, 0);
   border: 0.1rem solid rgb(255, 123, 0);
+  padding: 1rem;
 }
 
 .add{
@@ -61,4 +64,13 @@ input{
   display: flex;
   justify-content: space-between;
   background-color: rgb(255, 123, 0);
+}
+
+/* Dropdown */
+select{
+  border: 0.14rem solid rgb(255, 123, 0);
+  outline-color:rgb(255, 123, 0);
+  font-size: 2rem;
+  margin: 2rem 1rem 0rem 0rem;
+  padding: 0.4rem;
 }
