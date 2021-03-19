@@ -14,6 +14,20 @@ body {
   /* background-color: rgb(24, 26, 27);
   color:white; */
 }
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+}
+
 main {
   padding: 2rem;
 }
@@ -27,7 +41,7 @@ ul {
 /* input-style */
 .input {
   max-width: 50rem;
-  margin: 2rem 0rem 2rem;
+  margin: 2rem 0rem 0rem 0rem;
   display: flex;
   height: fit-content;
   height: 3.5rem;
@@ -41,7 +55,7 @@ input {
   padding: 1rem;
 }
 
-.add {
+.add{
   margin-left: 1px;
   border: 0.14rem solid rgb(255, 123, 0);
   outline-color: rgb(255, 123, 0);
@@ -51,31 +65,47 @@ input {
   color: white;
 }
 
-.add:hover {
+.add:hover{
   background-color: white;
   color: rgb(255, 123, 0);
   cursor: pointer;
 }
 
+.error{
+  order:1;
+  color: rgb(255, 102, 0);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 /* todo-style */
 .todo {
   width: fit-content;
-  border: 1px solid red;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(255, 123, 0);
-  margin: auto;
+  margin:0 auto;
   margin-bottom: 1rem;
-  border-radius: 0.4rem;
 }
 
 .todo li {
-  padding: 1rem;
+  padding-left: 1rem;
+  vertical-align: center;
+}
+.task-value{
+  padding:0.4rem;
+  background-color: rgb(250, 154, 65);
+  max-width: 25rem;
+  display: inline-block;
+  overflow-wrap: break-word;
 }
 
-.fa.fa-trash-alt,
-.fa.fa-check {
-  /* background-color: white; */
+.completed,.delete{
+  height:3.5rem;
+  width:3.5rem;
+  outline-color: none;
+}
+
+.completed{
+  
 }
 
 /* Dropdown */
