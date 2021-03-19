@@ -94,6 +94,7 @@ input {
   padding:0.4rem;
   background-color: rgb(250, 154, 65);
   max-width: 25rem;
+  min-width: 25rem;
   display: inline-block;
   overflow-wrap: break-word;
 }

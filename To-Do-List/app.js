@@ -17,7 +17,7 @@ document.addEventListener("keypress", (e) => {
 });
 deleteButton.addEventListener("click", deleteTodos);
 completedButton.addEventListener("click", completedTodos);
-
+console.log(deleteButton);
 // Functions
 
 function getTodos() {
@@ -64,11 +64,11 @@ function addHTML(task) {
       <span class="task-value">${task}</span>
 
       <button class="completed">
-        <i class="fa fa-trash-alt fa-2x"></i>
+        <i class="fa fa-check fa-2x"></i>
       </button>
 
-      <button class="delete">
-        <i class="fa fa-check fa-2x"></i>
+      <button class="delete"> 
+        <i class="fa fa-trash-alt fa-2x"></i>
       </button>
 
     </li>
@@ -76,6 +76,16 @@ function addHTML(task) {
  `;
   err.innerText = "";
 }
+
+function deleteTodos(e) {
+  const item = e.target;
+  const todo = item.parentElement;
+  removeLocalTodos(todo.children[0].innerText);
+  todo.remove();
+  console.log(item);
+}
+
+function completedTodos(e) {}
 
 function saveLocalTodos(todo) {
   if (localStorage.getItem("todos") === null) {
@@ -87,6 +97,7 @@ function saveLocalTodos(todo) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function deleteTodos(e) {}
-
-function completedTodos(e) {}
+function removeLocalTodos(todo) {
+  todos.splice(todos.indexOf(todo), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
