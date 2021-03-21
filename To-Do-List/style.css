@@ -9,7 +9,10 @@ html {
 body {
   font-size: 2.4rem;
   margin: 2rem auto;
-  width: fit-content;
+  width:fit-content;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
   background-color: rgb(174, 234, 252);
   /* background-color: rgb(24, 26, 27);
   color:white; */
@@ -40,28 +43,29 @@ ul {
 
 /* input-style */
 .input {
-  max-width: 50rem;
   margin: 2rem 0rem 0rem 0rem;
   display: flex;
-  height: fit-content;
-  height: 3.5rem;
+  width:fit-content;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
+  height: 4rem;
 }
 
 input {
-  height: 3.5rem;
+  height: 4rem;
   font-size: 2.5rem;
   outline-color: rgb(255, 123, 0);
-  border: 0.1rem solid rgb(255, 123, 0);
+  border:none;
   padding: 1rem;
 }
 
 .add{
   margin-left: 1px;
-  border: 0.14rem solid rgb(255, 123, 0);
+  border: none;
   outline-color: rgb(255, 123, 0);
   background-color: rgb(255, 123, 0);
-  border-radius: 0.2rem;
-  width: 3.5rem;
+  width: 4rem;
   color: white;
 }
 
@@ -72,7 +76,6 @@ input {
 }
 
 .error{
-  order:1;
   color: rgb(255, 102, 0);
   font-weight: bold;
   font-size: 1.5rem;
@@ -81,39 +84,72 @@ input {
 
 /* todo-style */
 .todo {
-  width: fit-content;
+  width:fit-content;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
   margin:0 auto;
   margin-bottom: 1rem;
+  background: rgb(218, 161, 161);
 }
 
 .todo li {
   padding-left: 1rem;
   vertical-align: center;
+  min-height: 4rem;
 }
 .task-value{
   padding:0.4rem;
   background-color: rgb(250, 154, 65);
-  max-width: 25rem;
-  min-width: 25rem;
+  width: 25rem;
   display: inline-block;
   overflow-wrap: break-word;
 }
 
-.completed,.delete{
-  height:3.5rem;
-  width:3.5rem;
+.completed-btn,.delete-btn{
+  height:4rem;
+  width:4rem;
   outline-color: none;
+  cursor:pointer;
+  border: none;
 }
 
-.completed{
-  
+.completed-btn{
+  color:white;
+  outline-color: rgb(117, 216, 117);
+  background-color: rgb(117, 216, 117);
+}
+
+.completed-btn:hover{
+  color:rgb(117, 216, 117);
+  background-color: white;
+}
+
+.delete-btn{
+  color:white;
+  outline-color: rgb(255, 111, 71);
+  background-color: rgb(255, 111, 71);
+}
+
+.delete-btn:hover{
+  color:rgb(255, 111, 71);
+  background-color: white;
+}
+
+.completed .task-value{
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+i{
+ pointer-events: none;
 }
 
 /* Dropdown */
 select {
-  border: 0.14rem solid rgb(255, 123, 0);
+  border: none;
   outline-color: rgb(255, 123, 0);
   font-size: 2rem;
   margin: 2rem 1rem 0rem 0rem;
   padding: 0.4rem;
+  cursor:pointer;
 }
