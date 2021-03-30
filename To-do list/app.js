@@ -2,18 +2,20 @@
 const addTodo = document.querySelector(".add");
 const Todolist = document.querySelector(".list");
 const err = document.querySelector(".error");
-let todos;
+let todos,completedTodos;
 
 // Event Listeners
-document.addEventListener("DOMContentLoaded", getTodos);
+document.addEventListener("DOMContentLoaded", getTodos,getCompletedTodos);
 addTodo.addEventListener("click", addTodos);
 document.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     addTodos();
   }
 });
-// Functions
 
+
+// Functions
+// Getting localStorage Todos
 function getTodos() {
   if (localStorage.getItem("todos") === null) {
     todos = [];
@@ -21,15 +23,27 @@ function getTodos() {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
   todos.forEach(function (todo) {
-    addHTML(todo);
+    addHTML(todo,"");
   });
 }
 
+function getCompletedTodos(){
+  if (localStorage.getItem("completedTodos") === null) {
+    completedTodos = [];
+  } else {
+    completedTodos = JSON.parse(localStorage.getItem("completedTodos"));
+  }
+  completedTodos.forEach(function (todo) {
+    addHTML(todo,"completed");
+  });
+}
+
+//Adding todos
 function addTodos() {
   const newTask = document.getElementById("task");
   if (newTask.value != "" || newTask.value != undefined) {
     if (!checkRedundancy(newTask.value)) {
-      addHTML(newTask.value);
+      addHTML(newTask.value,"");
       saveLocalTodos(newTask.value);
       newTask.value = "";
     }
@@ -56,12 +70,13 @@ function checkRedundancy(todo) {
   }
 }
 
-function addHTML(task) {
+function addHTML(task,className) {
+  console.log(className);
   Todolist.innerHTML += `
-      <div class="todo">
+      <div class="todo ${className}">
         <li class="task-value">${task}</li>
 
-        <button class="completed-btn" onclick="completedTodos(event)">
+        <button class="completed-btn" onclick="completeTodos(event)">
               <i class="fa fa-check fa-2x"></i>
         </button>
 
@@ -73,6 +88,7 @@ function addHTML(task) {
   err.innerText = "";
 }
 
+//deleting Todos
 function deleteTodos(e) {
   e.preventDefault();
   const item = e.target;
@@ -81,13 +97,21 @@ function deleteTodos(e) {
   removeLocalTodos(todo.children[0].innerText);
   }
 
-function completedTodos(e) {
+function removeLocalTodos(todo) {
+    todos.splice(todos.indexOf(todo), 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
+
+//Completed Todos
+function completeTodos(e) {
   e.preventDefault();
   const item = e.target;
   const todo = item.parentElement;
   console.log(todo);
   todo.classList.toggle("completed");
-
+  saveCompletedTodos(e.target.parentElement.children[0].innerText);
+  
 }
 
 function saveLocalTodos(todo) {
@@ -100,11 +124,17 @@ function saveLocalTodos(todo) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function removeLocalTodos(todo) {
-  todos.splice(todos.indexOf(todo), 1);
-  localStorage.setItem("todos", JSON.stringify(todos));
+function saveCompletedTodos(todo) {
+  if (localStorage.getItem("completedTodos") === null) {
+    completedTodos = [];
+  } else {
+    completedTodos = JSON.parse(localStorage.getItem("completedTodos"));
+  }
+  completedTodos.push(todo);
+  localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
 }
 
+//Filter Todos
 // function filterTodo(e){
 //   const filters = e.target.children;
 //   console.log(filters);

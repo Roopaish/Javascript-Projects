@@ -43,7 +43,7 @@ h3 {
   margin: 2rem;
 }
 
-#news {
+#news-list {
   font-size: 2rem;
   width: auto;
   position: relative;
@@ -54,6 +54,11 @@ h3 {
   margin-top: 0;
   border-radius: 2px;
   max-width: 600px;
+  margin-bottom:30px;
+}
+
+#news{
+  display: block;
 }
 #image img {
   border-radius: 1px;

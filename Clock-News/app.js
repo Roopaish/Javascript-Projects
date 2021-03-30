@@ -26,17 +26,16 @@ window.addEventListener("load", () => {
 // title = document.getElementById('title');
 // description = document.getElementById('description');
 // link = document.getElementById('link');
-news = document.getElementById("news");
+news = document.getElementById("news-list");
 var NewsApi = function () {
   fetch(
     "https://api.nytimes.com/svc/topstories/v2/science.json?api-key=vHGgEvamzPaHT4fAn8SOZA2QdSGK1ZHK"
   )
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
       for (var i = 0; i <= res.num_results; i++) {
         news.innerHTML += `
-        <div id="news${i}">
+        <div id="news">
         <div id="image">
           <img src="${res.results[i].multimedia[0].url}" alt="">
         </div>

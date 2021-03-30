@@ -1,3 +1,3 @@
 # Clock-News
 
-Implementation of getDate() and New York Times api
+Implementation of Date() and New York Times api
