@@ -8,73 +8,75 @@ html {
   font-size: 10px;
 }
 
-body{
+body {
   margin: auto;
   font-size: 2.4rem;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   max-width: 900px;
 }
 
-h1{
-  margin:2rem;
+h1 {
+  margin: 2rem;
   font-weight: 600;
-  width:100vw;
+  width: 100vw;
   font-size: 4rem;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-img{
-  width:40rem;
+img {
+  width: 40rem;
 }
 
-main{
+main {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
-  align-items:flex-start;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
-.item{
+.item {
   position: relative;
-  width:40rem;
+  width: 40rem;
   border-radius: 5px;
-  box-shadow: 0 0 3px 5px rgb(0,0,0,0.2);
-  margin-bottom:5rem;
+  box-shadow: 0 0 3px 5px rgb(0, 0, 0, 0.2);
+  margin-bottom: 5rem;
   overflow: hidden;
 }
 
-.item img{
+.item img {
   height: 100%;
   width: 100%;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
-.item:hover img{
+.item:hover img {
   transform: scale(1.5);
 }
 
-.item p{
-  color:black;
+.item p {
+  color: black;
   position: absolute;
-  bottom:1rem;
-  right:1rem;
+  bottom: 1rem;
+  right: 1rem;
   background-color: antiquewhite;
   padding: 1rem;
   border-radius: 4rem;
   font-weight: 500;
   font-size: 2rem;
-  opacity:0;
-  transition: .2s ease-in-out;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
 }
 
-.item:hover p,.item:focus p{
-  opacity:1;
+.item:hover p,
+.item:focus p {
+  opacity: 1;
 }
 
-footer a,footer{
-  color:rgba(80, 78, 78, 0.719);
+footer a,
+footer {
+  color: rgba(80, 78, 78, 0.719);
 }
