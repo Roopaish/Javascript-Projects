@@ -74,3 +74,7 @@ main{
 .item:hover p,.item:focus p{
   opacity:1;
 }
+
+footer a,footer{
+  color:rgba(80, 78, 78, 0.719);
+}
