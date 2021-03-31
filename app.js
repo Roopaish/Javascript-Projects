@@ -11,6 +11,7 @@ const images = [
   "tip-calculator.png",
   "To-do.png",
   "gallery.png",
+  "Drawing-app.png"
 ];
 
 addProjectsToDOM();
