@@ -1,5 +1,5 @@
 window.addEventListener("load", DrawingBoard);
-window.addEventListener("resize", DrawingBoard);
+//window.addEventListener("resize", DrawingBoard);
 
 function DrawingBoard() {
   // DOM Elements
