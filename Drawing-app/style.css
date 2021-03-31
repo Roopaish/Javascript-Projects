@@ -1,0 +1,40 @@
+*{
+  padding:0;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+canvas{
+  box-shadow: 0 0 3px 5px rgba(0,0,0,0.1) , 0 0 3px 5px rgba(0,0,0,0.1);
+}
+
+#options{
+  display: flex;
+  justify-content: space-between;
+  width : calc(0.8*100vw);
+  margin-top: 10px;
+}
+
+label,select{
+  padding:0 5px 0 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow:0 3px 1px 1px rgba(0,0,0,0.1);
+}
+
+input,select{
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline-color: white;
+}
+
+#width{
+  width:50px
+}

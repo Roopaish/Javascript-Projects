@@ -3,6 +3,7 @@ const projects = [
   "Tip-Calculator",
   "To-do list",
   "CSS-Grid gallery",
+  "Drawing-app"
 ];
 const main = document.getElementById("main");
 const images = [
