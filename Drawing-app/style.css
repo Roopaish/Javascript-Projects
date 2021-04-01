@@ -19,6 +19,7 @@ canvas{
   justify-content: space-between;
   width : calc(0.8*100vw);
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 label,select{
@@ -36,5 +37,5 @@ input,select{
 }
 
 #width{
-  width:50px
+  width:50px;
 }

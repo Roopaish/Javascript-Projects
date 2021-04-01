@@ -1,3 +1,4 @@
+noScroll();
 window.addEventListener("load", DrawingBoard);
 //window.addEventListener("resize", DrawingBoard);
 
@@ -9,6 +10,8 @@ function DrawingBoard() {
   const strokeColor = document.getElementById("stroke");
   const shapes = document.getElementById("shapes");
   const strokeWidth = document.getElementById("width");
+  const clear = document.getElementById("clear");
+
   strokeWidth.value = "3";
 
   canvas.width = 0.8 * window.innerWidth;
@@ -22,6 +25,7 @@ function DrawingBoard() {
   canvas.addEventListener("touchstart", startPosn);
   canvas.addEventListener("touchend", finishPosn);
   canvas.addEventListener("touchmove", drawTouch);
+  clear.addEventListener('click',clearAll);
 
   // Function
   function startPosn() {
@@ -66,7 +70,18 @@ function DrawingBoard() {
     ctx.lineTo(x, y);
     ctx.stroke();
   }
+
+  function clearAll(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
+
+function noScroll() {
+  window.scrollTo(0, 0);
+}
+
+// add listener to disable scroll
+window.addEventListener('scroll', noScroll);
 
 // ctx.strokeStyle = "red";
 // ctx.fillStyle ="blue";
