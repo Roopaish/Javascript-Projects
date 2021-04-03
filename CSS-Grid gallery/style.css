@@ -19,11 +19,9 @@ body{
 /* Gallery  */
 
 .gallery{
-  max-width: 900px;
   margin: 1rem;
   box-shadow:0 0 3px 5px rgb(0,0,0,0.1), 0 0 3px 5px rgb(0,0,0,0.1);
   display: grid;
-  grid-auto-flow: row;
   grid-template-columns: repeat(2,1fr) 20% 30%;
   grid-auto-rows: 100px 200px 100px;
   gap:0.5rem;/*gap:10px; gap:rowandcolumnboth |rows column;*/
@@ -49,7 +47,9 @@ body{
   border-radius: 5px;
 }
 .image:hover img{
+  border-radius: 5px;
   transform:scale(1.5);
+  
 }
 
 #fullImage{
