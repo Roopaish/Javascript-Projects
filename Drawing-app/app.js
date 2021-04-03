@@ -44,6 +44,7 @@ function DrawingBoard() {
   function finishPosn() {
     drawing = false;
     ctx.beginPath(); // Reset the beginning of the line
+    
     const penColor = document.getElementById("color");
     let isDuplicate = false;
     Colors.forEach((color) => {
@@ -72,7 +73,7 @@ function DrawingBoard() {
     ctx.lineCap = "round";
     ctx.fillStyle = penColor.value;
     ctx.strokeStyle = penColor.value;
-    
+
 
     if (shapes.children[0].selected) {
 
