@@ -1,6 +1,7 @@
 // 2D canvas Setup
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
+const scoreEl = document.getElementById("score")
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -67,7 +68,7 @@ const enemies = []
 const particles = []
 
 // Animating Projectiles and Enemies & removing
-let animationId
+let animationId, score = 0
 function animate() {
   animationId = requestAnimationFrame(animate)
   // Clearing canvas by applying big Rect on Top of canvas before firing another projectile
@@ -116,9 +117,11 @@ function animate() {
 
     // Remove projectile and enemy on collision
     projectiles.forEach((projectile, projectileIndex) => {
+      
       const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
       if (dist - projectile.radius - enemy.radius < 1) {
+
         // Defining Particles
         for (let i = 0; i < enemy.radius; i++) {
           particles.push(
@@ -138,11 +141,19 @@ function animate() {
         // setTimout to get rid of re-rendered flash effect after enemy and projectile are cleared
         setTimeout(() => {
           if (enemy.radius - 10 > 10) {
+             //Score Update
+            score += 50;
+            scoreEl.innerText = `${score}`
+
             gsap.to(enemy, {
               radius: enemy.radius - 10,
             })
             projectiles.splice(projectileIndex, 1)
           } else {
+             //Score Update
+            score += 100;
+            scoreEl.innerText = `${score}`
+
             enemies.splice(enemyIndex, 1)
             projectiles.splice(projectileIndex, 1)
           }
