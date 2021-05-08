@@ -186,8 +186,8 @@ addEventListener("click", (e) => {
   const Yposn = e.clientY || e.touches[0].clientY
   const angle = Math.atan2(Yposn - y, Xposn - x)
   const velocity = {
-    xV: Math.cos(angle) * 5,
-    yV: Math.sin(angle) * 5,
+    xV: Math.cos(angle) * 6,
+    yV: Math.sin(angle) * 6,
   }
 
   projectiles.push(new Projectile(x, y, 5, "white", velocity))
