@@ -5,6 +5,11 @@ const scoreEl = document.getElementById("score")
 const startGameBtn = document.getElementById("startGameBtn")
 const menuEl = document.getElementById("menu")
 const bigScoreEl = document.getElementById("bigScore")
+const hitSound = document.getElementById("hit")
+const explodeSound = document.getElementById("explode")
+const fireSound = document.getElementById("fire")
+const startSound = document.getElementById("startgame")
+const endSound = document.getElementById("endgame")
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -70,7 +75,7 @@ let projectiles = []
 let enemies = []
 let particles = []
 
-function init(){
+function init() {
   score = 0
   scoreEl.innerText = score
   bigScoreEl.innerText = score
@@ -81,7 +86,8 @@ function init(){
 }
 
 // Animating Projectiles and Enemies & removing
-let animationId, score = 0
+let animationId,
+  score = 0
 function animate() {
   animationId = requestAnimationFrame(animate)
   // Clearing canvas by applying big Rect on Top of canvas before firing another projectile
@@ -96,8 +102,8 @@ function animate() {
       particles.splice(particleIndex, 1)
     }
     particle.alpha -= 0.01
-    particle.velocity.xV *= friction;
-    particle.velocity.yV *= friction;
+    particle.velocity.xV *= friction
+    particle.velocity.yV *= friction
     particle.update()
   })
 
@@ -125,19 +131,20 @@ function animate() {
     // Detecting collision on player (game end)
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y)
     if (dist - player.radius - enemy.radius < 1) {
-      cancelAnimationFrame(animationId)
-      bigScoreEl.innerText = `${score}`
-      startGameBtn.innerText = 'Restart'
-      menuEl.style.display = 'flex'
+      endSound.play()
+      setTimeout(() => {
+        cancelAnimationFrame(animationId)
+        bigScoreEl.innerText = `${score}`
+        startGameBtn.innerText = "Restart"
+        menuEl.style.display = "flex"
+      }, 150)
     }
 
     // Remove projectile and enemy on collision
     projectiles.forEach((projectile, projectileIndex) => {
-      
       const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
       if (dist - projectile.radius - enemy.radius < 1) {
-
         // Defining Particles
         for (let i = 0; i < enemy.radius; i++) {
           particles.push(
@@ -157,17 +164,19 @@ function animate() {
         // setTimout to get rid of re-rendered flash effect after enemy and projectile are cleared
         setTimeout(() => {
           if (enemy.radius - 10 > 10) {
-             //Score Update
-            score += 50;
+            //Score Update
+            score += 50
             scoreEl.innerText = `${score}`
 
             gsap.to(enemy, {
               radius: enemy.radius - 10,
             })
+            hitSound.play()
             projectiles.splice(projectileIndex, 1)
           } else {
-             //Score Update
-            score += 100;
+            //Score Update
+            explodeSound.play()
+            score += 100
             scoreEl.innerText = `${score}`
 
             enemies.splice(enemyIndex, 1)
@@ -179,9 +188,9 @@ function animate() {
   })
 }
 
-
 // Firing Projectiles on click
 addEventListener("click", (e) => {
+  fireSound.play()
   const Xposn = e.clientX || e.touches[0].clientX
   const Yposn = e.clientY || e.touches[0].clientY
   const angle = Math.atan2(Yposn - y, Xposn - x)
@@ -223,13 +232,13 @@ function spawnEnemies() {
         velocity
       )
     )
-  }, 1000)
+  }, 2000)
 }
 
-
-startGameBtn.addEventListener('click',()=>{
+startGameBtn.addEventListener("click", () => {
+  startSound.play()
   init()
   animate()
   spawnEnemies()
-  menuEl.style.display = 'none'
+  menuEl.style.display = "none"
 })
