@@ -45,25 +45,39 @@ class Enemy extends Projectile {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-const player = new Player(x, y, 30, "white")
+const player = new Player(x, y, 10, "white")
 const projectiles = []
 const enemies = []
 
 // Animating Projectiles and Enemies & removing
 let animationId
 function animate() {
+
   animationId = requestAnimationFrame(animate)
   // Clearing canvas by applying big Rect on Top of canvas before firing another projectile
-  ctx.clearRect(0, 0, 2 * x, 2 * y)
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)' // alpha value for smooth fading effect
+  ctx.fillRect(0, 0, 2 * x, 2 * y)
   //To not clear Player
   player.draw()
 
-  projectiles.forEach((projectile) => {
+  projectiles.forEach((projectile, projectileIndex) => {
     projectile.draw()
     projectile.update()
+
+    // Free projectiles when they go affscreen
+    if(projectile.x + projectile.radius < 0 ||
+      projectile.x - projectile.radius > 2*x ||
+      projectile.y + projectile.radius < 0 ||
+      projectile.y - projectile.radius > 2*y 
+      ){
+      setTimeout(()=>{
+        projectiles.splice(projectileIndex, 1)
+      },0)
+    }
   })
 
   enemies.forEach((enemy, enemyIndex) => {
+
     enemy.draw()
     enemy.update()
 
@@ -95,15 +109,16 @@ animate()
 
 // Firing Projectiles on click
 addEventListener("click", (e) => {
+
   const Xposn = e.clientX || e.touches[0].clientX
   const Yposn = e.clientY || e.touches[0].clientY
   const angle = Math.atan2(Yposn - y, Xposn - x);
   const velocity = {
-    xV: Math.cos(angle),
-    yV: Math.sin(angle)
+    xV: Math.cos(angle) * 5,
+    yV: Math.sin(angle) * 5
   }
 
-  projectiles.push(new Projectile(x, y, 5, "red", velocity))
+  projectiles.push(new Projectile(x, y, 5, "white", velocity))
 })
 
 // Spawning new Enemies every sec
@@ -127,7 +142,7 @@ function spawnEnemies() {
       yV: Math.sin(angle),
     }
 
-    enemies.push(new Enemy(Xposn, Yposn, radius, "pink", velocity))
+    enemies.push(new Enemy(Xposn, Yposn, radius, `hsl(${Math.random() * 360},50% ,50%)`, velocity))
   }, 1000)
 }
 
