@@ -2,7 +2,7 @@
 const addTodo = document.querySelector(".add");
 const Todolist = document.querySelector(".list");
 const err = document.querySelector(".error");
-let todos,completedTodos;
+let todos;
 
 // Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos,getCompletedTodos);
