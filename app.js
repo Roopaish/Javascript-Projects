@@ -1,20 +1,22 @@
 const projects = [
+  "Shooting Game",
   "Clock-News",
   "Tip-Calculator",
   "To-do list",
   "CSS-Grid gallery",
-  "Drawing-app"
-];
-const main = document.getElementById("main");
+  "Drawing-app",
+]
+const main = document.getElementById("main")
 const images = [
+  "Shooting-game.png",
   "clocknews.png",
   "tip-calculator.png",
   "To-do.png",
   "gallery.png",
-  "Drawing-app.png"
-];
+  "Drawing-app.png",
+]
 
-addProjectsToDOM();
+addProjectsToDOM()
 function addProjectsToDOM() {
   projects.forEach((project, index) => {
     main.innerHTML += `
@@ -25,8 +27,8 @@ function addProjectsToDOM() {
       </a>
       <p>${project}</p>
     </div>
-  `;
-  });
+  `
+  })
 }
 
-console.log(main.innerHTML);
+console.log(main.innerHTML)
