@@ -49,7 +49,7 @@ const player = new Player(x, y, 30, "white")
 const projectiles = []
 const enemies = []
 
-// Animating Projectiles and Enemies
+// Animating Projectiles and Enemies & removing
 function animate() {
   requestAnimationFrame(animate)
   // Clearing canvas by applying big Rect on Top of canvas before firing another projectile
@@ -62,9 +62,22 @@ function animate() {
     projectile.update()
   })
 
-  enemies.forEach((enemy) => {
+  enemies.forEach((enemy, enemyIndex) => {
     enemy.draw()
     enemy.update()
+
+    // Remove projectile and enemy on collision
+    projectiles.forEach((projectile, projectileIndex)=>{
+      const dist =  Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
+
+      if(dist - projectile.radius - enemy.radius < 1){
+        // setTimout to get rid of re-rendered flash effect after enemy and projectile are cleared
+        setTimeout(()=>{
+          enemies.splice(enemyIndex, 1)
+          projectiles.splice(projectileIndex, 1)
+        },0)
+      }
+    })
   })
 }
 
@@ -74,10 +87,10 @@ animate()
 addEventListener("click", (e) => {
   const Xposn = e.clientX || e.touches[0].clientX
   const Yposn = e.clientY || e.touches[0].clientY
-  const angle = Math.atan2(Yposn - y, Xposn - x)
+  const angle = Math.atan2(Yposn - y, Xposn - x);
   const velocity = {
     xV: Math.cos(angle),
-    yV: Math.sin(angle),
+    yV: Math.sin(angle)
   }
 
   projectiles.push(new Projectile(x, y, 5, "red", velocity))
