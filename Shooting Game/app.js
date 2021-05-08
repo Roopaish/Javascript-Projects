@@ -50,8 +50,9 @@ const projectiles = []
 const enemies = []
 
 // Animating Projectiles and Enemies & removing
+let animationId
 function animate() {
-  requestAnimationFrame(animate)
+  animationId = requestAnimationFrame(animate)
   // Clearing canvas by applying big Rect on Top of canvas before firing another projectile
   ctx.clearRect(0, 0, 2 * x, 2 * y)
   //To not clear Player
@@ -66,6 +67,13 @@ function animate() {
     enemy.draw()
     enemy.update()
 
+    // Detecting collision on player (game end)
+    const dist =  Math.hypot(player.x - enemy.x, player.y - enemy.y)
+    if(dist - player.radius - enemy.radius < 1){
+      cancelAnimationFrame(animationId)
+    }
+
+
     // Remove projectile and enemy on collision
     projectiles.forEach((projectile, projectileIndex)=>{
       const dist =  Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
@@ -78,7 +86,9 @@ function animate() {
         },0)
       }
     })
+
   })
+
 }
 
 animate()
