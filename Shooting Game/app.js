@@ -2,6 +2,9 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const scoreEl = document.getElementById("score")
+const startGameBtn = document.getElementById("startGameBtn")
+const menuEl = document.getElementById("menu")
+const bigScoreEl = document.getElementById("bigScore")
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -62,10 +65,20 @@ class Particle extends Projectile {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-const player = new Player(x, y, 10, "white")
-const projectiles = []
-const enemies = []
-const particles = []
+let player = new Player(x, y, 10, "white")
+let projectiles = []
+let enemies = []
+let particles = []
+
+function init(){
+  score = 0
+  scoreEl.innerText = score
+  bigScoreEl.innerText = score
+  player = new Player(x, y, 10, "white")
+  projectiles = []
+  enemies = []
+  particles = []
+}
 
 // Animating Projectiles and Enemies & removing
 let animationId, score = 0
@@ -113,6 +126,9 @@ function animate() {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y)
     if (dist - player.radius - enemy.radius < 1) {
       cancelAnimationFrame(animationId)
+      bigScoreEl.innerText = `${score}`
+      startGameBtn.innerText = 'Restart'
+      menuEl.style.display = 'flex'
     }
 
     // Remove projectile and enemy on collision
@@ -163,7 +179,6 @@ function animate() {
   })
 }
 
-animate()
 
 // Firing Projectiles on click
 addEventListener("click", (e) => {
@@ -211,4 +226,10 @@ function spawnEnemies() {
   }, 1000)
 }
 
-spawnEnemies()
+
+startGameBtn.addEventListener('click',()=>{
+  init()
+  animate()
+  spawnEnemies()
+  menuEl.style.display = 'none'
+})
