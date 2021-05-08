@@ -42,12 +42,29 @@ class Enemy extends Projectile {
   }
 }
 
+// Particles
+const friction = 0.99
+class Particle extends Projectile {
+  constructor(x, y, radius, color, velocity) {
+    super(x, y, radius, color, velocity)
+    this.alpha = 1
+  }
+
+  emitParticles() {
+    ctx.save()
+    ctx.globalAlpha = this.alpha //save and restore is for globalAlpha to work
+    this.draw()
+    ctx.restore()
+  }
+}
+
 const x = canvas.width / 2
 const y = canvas.height / 2
 
 const player = new Player(x, y, 10, "white")
 const projectiles = []
 const enemies = []
+const particles = []
 
 // Animating Projectiles and Enemies & removing
 let animationId
@@ -58,6 +75,17 @@ function animate() {
   ctx.fillRect(0, 0, 2 * x, 2 * y)
   //To not clear Player
   player.draw()
+
+  particles.forEach((particle, particleIndex) => {
+    particle.emitParticles()
+    if (particle.alpha <= 0.1) {
+      particles.splice(particleIndex, 1)
+    }
+    particle.alpha -= 0.01
+    particle.velocity.xV *= friction;
+    particle.velocity.yV *= friction;
+    particle.update()
+  })
 
   projectiles.forEach((projectile, projectileIndex) => {
     projectile.draw()
@@ -91,11 +119,27 @@ function animate() {
       const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
       if (dist - projectile.radius - enemy.radius < 1) {
+        // Defining Particles
+        for (let i = 0; i < enemy.radius; i++) {
+          particles.push(
+            new Particle(
+              projectile.x,
+              projectile.y,
+              Math.random() * 2,
+              enemy.color,
+              {
+                xV: (Math.random() - 0.5) * Math.random() * 5,
+                yV: (Math.random() - 0.5) * Math.random() * 5,
+              }
+            )
+          )
+        }
+
         // setTimout to get rid of re-rendered flash effect after enemy and projectile are cleared
         setTimeout(() => {
           if (enemy.radius - 10 > 10) {
-            gsap.to(enemy,{
-              radius : enemy.radius - 10
+            gsap.to(enemy, {
+              radius: enemy.radius - 10,
             })
             projectiles.splice(projectileIndex, 1)
           } else {
