@@ -5,6 +5,7 @@ const projects = [
   "To-do list",
   "CSS-Grid gallery",
   "Drawing-app",
+  "Sinewave"
 ]
 const main = document.getElementById("main")
 const images = [
@@ -14,6 +15,7 @@ const images = [
   "To-do.png",
   "gallery.png",
   "Drawing-app.png",
+  "sinewave.png"
 ]
 
 addProjectsToDOM()
